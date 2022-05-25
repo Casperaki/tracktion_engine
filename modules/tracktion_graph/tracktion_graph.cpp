@@ -21,7 +21,9 @@
 #include <juce_audio_formats/juce_audio_formats.h>
 
 //==============================================================================
-#include "tracktion_graph_TestConfig.h"
+#if TRACKTION_UNIT_TESTS
+ #include "tracktion_graph_TestConfig.h"
+#endif
 
 //==============================================================================
 #include "tracktion_graph.h"
