@@ -29,7 +29,7 @@ namespace
        #if JUCE_INTEL
         _mm_pause();
         _mm_pause();
-       #else
+       #elif ! JUCE_EMSCRIPTEN
         __asm__ __volatile__ ("yield");
         __asm__ __volatile__ ("yield");
        #endif
@@ -244,7 +244,7 @@ private:
        #if JUCE_INTEL
         _mm_pause();
         _mm_pause();
-       #else
+       #elif ! JUCE_EMSCRIPTEN
         __asm__ __volatile__ ("yield");
         __asm__ __volatile__ ("yield");
        #endif
