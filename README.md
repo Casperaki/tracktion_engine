@@ -22,7 +22,20 @@ emmake make
 ## Creating a new `tracktion_engine` project with WASM
 
 - Clone/download this repo;
+- Add [this section](https://github.com/tralves/tracktion_engine/blob/develop/examples/StepSequencerDemo/StepSequencerDemo/StepSequencerDemo.jucer#L56-L81) to your `.jucer`. Adjust the module paths accordingly;
+- Save the Emscripten exporter in Projucer to generate `Builds/Emscripten`;
+- Update manually `Builds/Emscripten/Makefile` (see the [`StepSequencerDemo`'s `Makefile`](https://github.com/tralves/tracktion_engine/blob/develop/examples/StepSequencerDemo/StepSequencerDemo/Builds/Emscripten/Makefile) for reference):
+  - Remove all `$(shell pkg-config ...)`;
+  - Add `.html` extension to target app. E.g. `JUCE_TARGET_APP := YourProject.html`;
+  - (Optional) For Debug build add `-s SAFE_HEAP=1 -s ASSERTIONS=1` to `JUCE_CFLAGS`;
+  - (Optional) For Release build add `--s WASM_OBJECT_FILES=0 ` to `JUCE_CFLAGS` and `--llvm-lto 1` to `JUCE_LDFLAGS`;
+- Run `emmake make`;
+- (If all goes well...) `cd build/`
+- `http-server .` (using [`/http-server`](https://www.npmjs.com/package/http-server));
 
+More info and troubleshooting:
+- [`tralves/juce_emscripten`](https://github.com/tralves/juce_emscripten);
+- [juce_emscripten: the latest JUCE on WebAssembly](https://atsushieno.github.io/2020/01/01/juce-emscripten-the-latest-juce-on-webassembly.html) by atsushieno;
 
 
 ![](tutorials/images/tracktion_engine_powered.png)
