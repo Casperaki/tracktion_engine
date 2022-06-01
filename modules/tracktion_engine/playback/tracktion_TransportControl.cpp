@@ -514,6 +514,8 @@ struct TransportControl::PlayHeadWrapper
     /** Returns the transport position to show in the UI, taking in to account any latency. */
     double getLiveTransportPosition() const
     {
+        DBG("Audible timeline: " << transport.playbackContext->getAudibleTimelineTime());
+        DBG("getPosition: " << getPosition());
         if (getNodePlayHead() != nullptr && transport.playbackContext != nullptr && transport.playbackContext->isPlaybackGraphAllocated())
             return transport.playbackContext->getAudibleTimelineTime();
 
@@ -941,13 +943,18 @@ void TransportControl::clearPlayingFlags()
 //==============================================================================
 void TransportControl::timerCallback()
 {
+    // DBG("TransportControl::timerCallback");
     CRASH_TRACER
+
+    // DBG("playbackContext is null: " << (int)(playbackContext == nullptr));
 
     if (playbackContext == nullptr)
         return;
 
     if (isDelayedChangePending)
         editHasChanged();
+
+    // DBG("isPlaying: " << (int)isPlaying() << " position: "<< position << " getPosition(): "<< playHeadWrapper->getPosition() << " Edit::maximumLength: " << Edit::maximumLength);
 
     if (isPlaying() && playHeadWrapper->getPosition() >= Edit::maximumLength)
     {
@@ -1500,6 +1507,7 @@ void TransportControl::performPositionChange()
         stop (false, false);
 
     double newPos = state[IDs::position];
+    DBG("performPositionChange: " << newPos);
 
     if (isPlaying() && looping)
     {
