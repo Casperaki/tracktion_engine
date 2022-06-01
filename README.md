@@ -1,3 +1,30 @@
+# tracktion_engine with WASM support
+
+This repo is a fork of the [`tracktion_engine`] that adds support for WASM builds throught Emscripten.
+*Use the `develop` branch!*
+
+Changes in this fork:
+
+- Added `JUCE_EMSCRIPTEN` guards in places that had guards for other processor families;
+- Using [`tralves/juce_emscripten`](https://github.com/tralves/juce_emscripten) instead of the official JUCE repo. [`tralves/juce_emscripten`](https://github.com/tralves/juce_emscripten) is an update of [`Dreamtonics/juce_emscripten`](https://github.com/Dreamtonics/juce_emscripten) to JUCE 6.1.6. It adds support for running JUCE apps in a browser through WebAssembly;
+- Added `StepSequencerDemo.jucer` and its `Emscripten` Build folder;
+
+## Building `StepSequencerDemo` WASM project
+
+- Install [`Emscripten`](https://emscripten.org/);
+
+```bash
+cd examples/StepSequencerDemo/StepSequencerDemo/Builds/Emscripten
+
+emmake make
+```
+
+## Creating a new `tracktion_engine` project with WASM
+
+- Clone/download this repo;
+
+
+
 ![](tutorials/images/tracktion_engine_powered.png)
 
 master: [![Build](https://github.com/Tracktion/tracktion_engine/actions/workflows/build.yaml/badge.svg?branch=master)](https://github.com/Tracktion/tracktion_engine/actions/workflows/build.yaml)

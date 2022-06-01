@@ -514,8 +514,8 @@ struct TransportControl::PlayHeadWrapper
     /** Returns the transport position to show in the UI, taking in to account any latency. */
     double getLiveTransportPosition() const
     {
-        DBG("Audible timeline: " << transport.playbackContext->getAudibleTimelineTime());
-        DBG("getPosition: " << getPosition());
+        // DBG("Audible timeline: " << transport.playbackContext->getAudibleTimelineTime());
+        // DBG("getPosition: " << getPosition());
         if (getNodePlayHead() != nullptr && transport.playbackContext != nullptr && transport.playbackContext->isPlaybackGraphAllocated())
             return transport.playbackContext->getAudibleTimelineTime();
 

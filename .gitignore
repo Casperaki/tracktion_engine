@@ -29,7 +29,7 @@ Tracktion/**/[Rr]elease64*/
 
 # Build products
 build/
-build*/
+build*/*
 *.o
 
 # Other source repository archive directories (protects when importing)
@@ -76,3 +76,7 @@ doxygen/doc
 **/3rd_party/rubberband
 **/cmake-build**
 **/.idea/**
+
+# Save Emscripten Makefile
+!examples/StepSequencerDemo/StepSequencerDemo/Builds/Emscripten
+!examples/StepSequencerDemo/StepSequencerDemo/Builds/Emscripten/build/_headers
