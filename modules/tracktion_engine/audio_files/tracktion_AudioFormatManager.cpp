@@ -85,9 +85,11 @@ AudioFileFormatManager::AudioFileFormatManager()
     writeFormatManager.registerFormat (new juce::OggVorbisAudioFormat(), false);
     writeFormatManager.registerFormat (new juce::FlacAudioFormat(), false);
 
+#if ! JUCE_EMSCRIPTEN
     memoryMappedFormatManager.registerFormat (new juce::WavAudioFormat(), true);
     memoryMappedFormatManager.registerFormat (new juce::AiffAudioFormat(), false);
     memoryMappedFormatManager.registerFormat (new FloatAudioFormat(), false);
+#endif
 }
 
 AudioFileFormatManager::~AudioFileFormatManager()
