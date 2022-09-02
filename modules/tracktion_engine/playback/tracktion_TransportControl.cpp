@@ -1507,7 +1507,6 @@ void TransportControl::performPositionChange()
         stop (false, false);
 
     double newPos = state[IDs::position];
-    DBG("performPositionChange: " << newPos);
 
     if (isPlaying() && looping)
     {
