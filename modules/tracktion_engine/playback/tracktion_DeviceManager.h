@@ -51,7 +51,7 @@ public:
     //==============================================================================
     ~DeviceManager() override;
 
-    void initialise (int defaultNumInputChannelsToOpen = 512,
+    void initialise (int defaultNumInputChannelsToOpen = 0,
                      int defaultNumOutputChannelsToOpen = 512);
     void closeDevices();
     void saveSettings();
@@ -241,7 +241,7 @@ private:
     juce::HeapBlock<float*> outputChannelsScratch;
 
    #if JUCE_ANDROID
-    ScopedSteadyLoad::Context steadyLoadContext;
+   // ScopedSteadyLoad::Context steadyLoadContext;
    #endif
 
     juce::ListenerList<CPUUsageListener> cpuUsageListeners;

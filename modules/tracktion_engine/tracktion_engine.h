@@ -593,7 +593,7 @@ namespace tracktion { inline namespace engine
 #include "playback/devices/tracktion_WaveOutputDevice.h"
 
 #if JUCE_ANDROID
- #include "playback/tracktion_ScopedSteadyLoad.h"
+// #include "playback/tracktion_ScopedSteadyLoad.h"
 #endif
 
 #include "playback/tracktion_DeviceManager.h"

@@ -1128,7 +1128,7 @@ void DeviceManager::audioDeviceIOCallbackInternal (const float* const* inputChan
 
     {
        #if JUCE_ANDROID
-        const ScopedSteadyLoad load (steadyLoadContext, numSamples);
+       // const ScopedSteadyLoad load (steadyLoadContext, numSamples);
        #endif
 
         const auto startTimeTicks = juce::Time::getHighResolutionTicks();
@@ -1251,7 +1251,7 @@ void DeviceManager::audioDeviceAboutToStart (juce::AudioIODevice* device)
     jassert (currentSampleRate > 0.0);
     
    #if JUCE_ANDROID
-    steadyLoadContext.setSampleRate (device->getCurrentSampleRate());
+   // steadyLoadContext.setSampleRate (device->getCurrentSampleRate());
    #endif
 }
 
